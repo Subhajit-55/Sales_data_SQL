@@ -1,4 +1,6 @@
+/*
 #Sales_data SQL queries
+*/
 
 --Net price for each customer
 select *, (gross_price - pre_invoice_discount_pct) Net_price_each  from sales_data
