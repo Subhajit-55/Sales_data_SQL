@@ -55,7 +55,7 @@ group by Product_code)
 select top(1) p.product, p.variant, t1.total_qty from t1 inner join Product p on t1.Product_code=p.Product_code
 order by t1.total_qty desc
 
---Top selling in country / total profit earn in countries
+--Total profit earn in each country
 
 with t3 as
 (select c.market as country, t2.Total_profit from (select customer_code, sum(profit) Total_profit from (select *,
