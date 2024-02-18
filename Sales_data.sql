@@ -49,11 +49,11 @@ select s.*, sum(Sold_quantity*Gross_price) over(partition by product_code) Total
 from sales_data s
 
 --Top selling product by quantity
-select p.product, t1."sold quantity" from (select s.*, sum(sold_quantity) over(partition by product_code) 'sold quantity' from sales_data s
-) 
-t1 left join Product p
-on t1.Product_code=p.Product_code
-order by 2 desc
+with t1 as
+(select product_code, sum(sold_quantity) Total_qty from sales_data
+group by Product_code)
+select top(1) p.product, p.variant, t1.total_qty from t1 inner join Product p on t1.Product_code=p.Product_code
+order by t1.total_qty desc
 
 --Top selling in country / total profit earn in countries
 
