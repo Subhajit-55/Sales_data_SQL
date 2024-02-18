@@ -9,7 +9,7 @@ select *, (gross_price - pre_invoice_discount_pct) Net_price_each  from sales_da
 select *, (gross_price - pre_invoice_discount_pct) Net_price_each, 
 (gross_price - pre_invoice_discount_pct)*Sold_quantity Total_net_price  from sales_data
 
---Profit/lose
+--Profit/loss
 select *, 'P/L' = case
 when "Profit/loss" > 0 then 'Profit'
 when "Profit/loss" < 0 then 'Loss'
